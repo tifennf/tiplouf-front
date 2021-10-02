@@ -1,0 +1,17 @@
+@keyframes floating {
+	from {
+		transform: rotate(-2deg);
+	}
+	to {
+		/* transform: rotate(90deg); */
+		transform: scale(0.95);
+	}
+}
+
+.anim-floating {
+	animation-duration: 3s;
+	animation-name: floating;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+}

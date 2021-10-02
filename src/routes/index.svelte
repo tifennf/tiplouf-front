@@ -11,9 +11,6 @@
 </svelte:head>
 
 <section>
-	<a href="/auth/login">login</a>
-	<a href="/auth/register">register</a>
-
 </section>
 
 <style>
