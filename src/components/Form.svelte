@@ -5,7 +5,6 @@
 
 <form on:submit|preventDefault={onSubmit}>
 	<header>
-
 		<slot />
 	</header>
 	<input type="submit" value={`${submitInfo}`} />
@@ -23,7 +22,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
-		
 	}
-
 </style>

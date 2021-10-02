@@ -1,12 +1,13 @@
 <script>
-	import { auth } from "$lib/auth.js";
+	import { auth } from '$lib/auth.js';
 
-	import Form from "$components/Form.svelte";
+	import Form from '$components/Form.svelte';
+	import { goto } from '$app/navigation';
 
-	export let ip = "http://localhost:3000";
+	export let ip = 'http://localhost:3000';
 
-	const path = "/api/auth/register";
-	const submitInfo = "Register";
+	const path = '/api/auth/register';
+	const submitInfo = 'Register';
 
 	let username;
 	let password;
@@ -14,22 +15,21 @@
 	const onSubmit = async () => {
 		const userData = {
 			username,
-			password,
+			password
 		};
 
 		const res = await auth(`${ip}${path}`, JSON.stringify(userData));
 
 		if (res.status === 200) {
-			username = "";
-			password = "";
+			username = '';
+			password = '';
 
-			console.log(res.body);
+			goto('/auth/login');
 		} else {
-			console.log("Unable to register");
+			console.log('Unable to register');
 		}
 	};
 </script>
-
 
 <Form {onSubmit} {submitInfo}>
 	<input
@@ -47,5 +47,3 @@
 		autocomplete="off"
 	/>
 </Form>
-
-

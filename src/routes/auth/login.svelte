@@ -1,17 +1,14 @@
 <script>
-	import { auth } from "$lib/auth.js";
+	import { auth } from '$lib/auth.js';
 
-	import Form from "$components/Form.svelte";
-	import isLogin from "$lib/stores/isLogin.js";
-import { goto } from "$app/navigation";
+	import Form from '$components/Form.svelte';
+	import isLogin from '$lib/stores/isLogin.js';
+	import { goto } from '$app/navigation';
 
-	export let ip = "http://localhost:3000";
+	export let ip = 'http://localhost:3000';
 
-	const path = "/api/auth/login";
-	const submitInfo = "Login";
-
-	console.log(isLogin);
-
+	const path = '/api/auth/login';
+	const submitInfo = 'Login';
 
 	let username;
 	let password;
@@ -19,17 +16,16 @@ import { goto } from "$app/navigation";
 	const onSubmit = async () => {
 		const userData = {
 			username,
-			password,
+			password
 		};
 
 		const res = await auth(`${ip}${path}`, JSON.stringify(userData));
 
 		if (res.status === 200) {
-
 			isLogin.update(() => true);
-			goto("/");
+			goto('/');
 		} else {
-			console.log("Unable to login");
+			console.log('Unable to login');
 		}
 	};
 </script>
@@ -50,5 +46,3 @@ import { goto } from "$app/navigation";
 		autocomplete="off"
 	/>
 </Form>
-
-
