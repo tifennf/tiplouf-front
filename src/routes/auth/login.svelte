@@ -2,11 +2,16 @@
 	import { auth } from "$lib/auth.js";
 
 	import Form from "$components/Form.svelte";
+	import isLogin from "$lib/stores/isLogin.js";
+import { goto } from "$app/navigation";
 
 	export let ip = "http://localhost:3000";
 
 	const path = "/api/auth/login";
 	const submitInfo = "Login";
+
+	console.log(isLogin);
+
 
 	let username;
 	let password;
@@ -20,10 +25,9 @@
 		const res = await auth(`${ip}${path}`, JSON.stringify(userData));
 
 		if (res.status === 200) {
-			username = "";
-			password = "";
 
-			console.log(res.body);
+			isLogin.update(() => true);
+			goto("/");
 		} else {
 			console.log("Unable to login");
 		}

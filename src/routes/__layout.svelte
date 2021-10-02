@@ -2,13 +2,23 @@
 <script>
 	import "../app.css";
 	import "../animation.css";
+
+	import isLogin from "$lib/stores/isLogin.js";
+
 </script>
 
 <div class="wrapper">
 	<header>
 		<div class="user-info">
-			<div class="led" />
+			{#if !$isLogin}
+				
+			<div class="led red-led" />
 			<span class="description">Not logged in</span>
+			{:else}
+			
+			<div class="led green-led" />
+			<span class="description">Logged in</span>
+			{/if}
 		</div>
 		<nav>
 			<ul>
@@ -41,12 +51,20 @@
 	}
 
 	.led {
-		background-color: var(--red-led);
 		padding: 0.5rem;
 		border-radius: 50%;
 		border-style: double;
 		border-width: 4px;
 		
+	}
+	
+	.red-led {
+		background-color: var(--red-led);
+
+	}
+	.green-led {
+		background-color: green;
+
 	}
 
 	.description {
