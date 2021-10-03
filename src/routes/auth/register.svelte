@@ -21,9 +21,6 @@
 		const res = await auth(`${ip}${path}`, JSON.stringify(userData));
 
 		if (res.status === 200) {
-			username = '';
-			password = '';
-
 			goto('/auth/login');
 		} else {
 			console.log('Unable to register');
