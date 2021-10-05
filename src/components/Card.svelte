@@ -10,5 +10,7 @@
 	.wrapper {
 		padding: 1rem;
 		border-radius: 1rem;
+
+		max-width: 12rem;
 	}
 </style>

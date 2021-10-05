@@ -28,16 +28,6 @@
 	<main>
 		<slot />
 	</main>
-
-	<footer>
-		<nav>
-			<ul>
-				<li class="anim-floating"><a href="/">HOME</a></li>
-				<li class="anim-floating"><a href="/auth/login">Login</a></li>
-				<li class="anim-floating"><a href="/auth/register">Register</a></li>
-			</ul>
-		</nav>
-	</footer>
 </div>
 
 <style>
@@ -80,7 +70,6 @@
 		place-items: center;
 	}
 	header nav {
-		/* border-style: dashed; */
 		border-width: 0.5px;
 		border-color: rgb(61, 61, 61);
 	}
@@ -131,6 +120,6 @@
 		display: grid;
 		place-items: center;
 		padding: 4rem;
-		background-color: black;
+		background-color: rgb(82, 82, 82);
 	}
 </style>
