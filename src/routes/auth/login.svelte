@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import Form from '$components/Form.svelte';
-	import { init } from '$lib/stores/user';
+	import { user } from '$lib/stores/user';
 
 	const submitInfo = 'Login';
 
@@ -15,7 +15,7 @@
 		};
 
 		try {
-			await init(userData);
+			await user.init(userData);
 			goto('/');
 		} catch (error) {
 			console.error(error);

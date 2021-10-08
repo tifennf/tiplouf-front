@@ -4,41 +4,35 @@ import { auth } from '$lib/auth';
 
 const ip = import.meta.env.VITE_API_IP;
 
-const makeAuthStore = (init) => {
-	const { subscribe, set } = writable(init);
+const makeUserStore = () => {
+	const { subscribe, update } = writable({ isLogin: false, playlist: [] });
+
+	const loginPath = `${ip}/auth/login`;
+	const playlistPath = `${ip}/playlist`;
 
 	const login = async (userData) => {
-		await auth(ip, JSON.stringify(userData), 'Could not login');
+		await auth(loginPath, JSON.stringify(userData), 'Could not login');
 
-		set(true);
+		update((current) => (current.isLogin = true));
 	};
-
-	return {
-		subscribe,
-		login
-	};
-};
-
-const makePlaylistStore = (init) => {
-	const { subscribe, set } = writable(init);
 
 	const loadPlaylist = async () => {
-		const data = await getPlaylist(ip);
-		set(data);
+		const data = await getPlaylist(playlistPath);
+
+		update((current) => (current.playlist = data));
+	};
+
+	const init = async (userData) => {
+		await login(userData);
+		loadPlaylist();
 	};
 
 	return {
 		subscribe,
+		init,
+		login,
 		loadPlaylist
 	};
 };
 
-const init = async (userData) => {
-	authStore.login(userData);
-	playlistStore.loadPlaylist();
-};
-
-const authStore = makeAuthStore(false);
-const playlistStore = makePlaylistStore([]);
-
-export { init, authStore, playlistStore };
+export const user = makeUserStore();

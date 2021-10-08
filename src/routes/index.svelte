@@ -5,7 +5,10 @@
 <script>
 	import Playlist from '$components/Playlist.svelte';
 	import loadPlaylist from '$lib/actions/loadPlaylist';
-	import { playlistStore } from '$lib/stores/user';
+	import { user } from '$lib/stores/user';
+
+	$: playlistStore = $user.playlist;
+	$: console.log($user.playlist);
 </script>
 
 <svelte:head>
@@ -13,7 +16,7 @@
 </svelte:head>
 
 <section use:loadPlaylist>
-	{#each $playlistStore as playlistData}
+	{#each $user.playlist as playlistData}
 		<Playlist {playlistData} />
 	{/each}
 </section>

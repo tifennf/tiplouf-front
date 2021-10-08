@@ -6,9 +6,11 @@ const auth = async (ip, userData, error) => {
 		},
 		body: userData
 	});
-	if (res.status !== 200) {
+	if (res.status < 200 || res.status > 299) {
 		throw error;
 	}
+
+	return res;
 };
 
 export { auth };

@@ -1,13 +1,13 @@
 <script>
 	import '../app.css';
 	import '../animation.css';
-	import { authStore } from '$lib/stores/user';
+	import { user } from '$lib/stores/user';
 </script>
 
 <div class="wrapper">
 	<header>
 		<div class="user-info">
-			<div class="led" class:green-led={$authStore} />
+			<div class="led" class:green-led={$user.isLogin} />
 			<span class="description">Not logged in</span>
 		</div>
 		<nav>

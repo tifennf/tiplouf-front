@@ -1,5 +1,5 @@
-import { playlistStore } from '$lib/stores/user/playlistStore';
+import { user } from '$lib/stores/user';
 
-const loadPlaylist = async () => playlistStore.loadPlaylist();
+const loadPlaylist = async () => user.loadPlaylist();
 
 export default loadPlaylist;
