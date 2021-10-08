@@ -8,15 +8,14 @@
 	import { user } from '$lib/stores/user';
 
 	$: playlistStore = $user.playlist;
-	$: console.log($user.playlist);
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-<section use:loadPlaylist>
-	{#each $user.playlist as playlistData}
+<section>
+	{#each playlistStore as playlistData}
 		<Playlist {playlistData} />
 	{/each}
 </section>

@@ -13,13 +13,27 @@ const makeUserStore = () => {
 	const login = async (userData) => {
 		await auth(loginPath, JSON.stringify(userData), 'Could not login');
 
-		update((current) => (current.isLogin = true));
+		update((current) => {
+			const update = {
+				...current,
+				isLogin: true
+			};
+
+			return update;
+		});
 	};
 
 	const loadPlaylist = async () => {
 		const data = await getPlaylist(playlistPath);
 
-		update((current) => (current.playlist = data));
+		update((current) => {
+			const update = {
+				...current,
+				playlist: data
+			};
+
+			return update;
+		});
 	};
 
 	const init = async (userData) => {
