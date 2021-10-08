@@ -1,6 +1,4 @@
 import { writable } from 'svelte/store';
-// import { getPlaylist } from '$lib/playlist';
-// import { auth } from '$lib/auth';
 
 const makeAuthStore = (init) => {
 	const { subscribe, set } = writable(init);
