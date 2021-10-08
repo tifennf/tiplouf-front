@@ -1,3 +1,11 @@
-const getAllPlaylist = (ip) => fetch(ip);
+const getPlaylist = async (ip) => {
+	const response = await fetch(ip);
 
-export { getAllPlaylist };
+	if (response.status !== 200) {
+		throw 'Could not fetch user playlist';
+	}
+
+	const res = await response.json();
+	return res.data;
+};
+export { getPlaylist };

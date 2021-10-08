@@ -1,4 +1,4 @@
-const auth = async (ip, userData) => {
+const auth = async (ip, userData, error) => {
 	const res = await fetch(ip, {
 		method: 'POST',
 		headers: {
@@ -6,8 +6,9 @@ const auth = async (ip, userData) => {
 		},
 		body: userData
 	});
-
-	return res;
+	if (res.status !== 200) {
+		throw error;
+	}
 };
 
 export { auth };

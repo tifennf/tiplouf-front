@@ -1,20 +1,14 @@
 <script>
 	import '../app.css';
 	import '../animation.css';
-
-	import isLogin from '$lib/stores/isLogin.js';
+	import { authStore } from '$lib/stores/user/authStore';
 </script>
 
 <div class="wrapper">
 	<header>
 		<div class="user-info">
-			{#if !$isLogin}
-				<div class="led red-led" />
-				<span class="description">Not logged in</span>
-			{:else}
-				<div class="led green-led" />
-				<span class="description">Logged in</span>
-			{/if}
+			<div class="led" class:green-led={$authStore} />
+			<span class="description">Not logged in</span>
 		</div>
 		<nav>
 			<ul>
@@ -50,11 +44,9 @@
 		border-radius: 50%;
 		border-style: double;
 		border-width: 4px;
-	}
-
-	.red-led {
 		background-color: var(--red-led);
 	}
+
 	.green-led {
 		background-color: green;
 	}
@@ -116,10 +108,10 @@
 		color: #ff86e5;
 	}
 
-	footer {
+	/* footer {
 		display: grid;
 		place-items: center;
 		padding: 4rem;
 		background-color: rgb(82, 82, 82);
-	}
+	} */
 </style>

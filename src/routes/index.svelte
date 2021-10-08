@@ -4,22 +4,16 @@
 
 <script>
 	import Playlist from '$components/Playlist.svelte';
-	import loadUserPlaylist from '$lib/actions/loadUserPlaylist';
-	import user from '$lib/stores/user';
-
-	const ip = 'http://localhost:3000/api/playlist';
-
-	let userPlaylist = $user.playlist;
-
-	// $: console.log(userPlaylist);
+	import loadPlaylist from '$lib/actions/loadPlaylist';
+	import { playlistStore } from '$lib/stores/user/playlistStore';
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-<section use:loadUserPlaylist={ip}>
-	{#each $user.playlist as playlistData}
+<section use:loadPlaylist>
+	{#each $playlistStore as playlistData}
 		<Playlist {playlistData} />
 	{/each}
 </section>

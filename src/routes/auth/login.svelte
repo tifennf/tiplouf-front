@@ -1,13 +1,8 @@
 <script>
-	import { auth } from '$lib/auth.js';
-
-	import Form from '$components/Form.svelte';
-	import isLogin from '$lib/stores/isLogin.js';
 	import { goto } from '$app/navigation';
+	import Form from '$components/Form.svelte';
+	import { init } from '$lib/stores/user';
 
-	export let ip = 'http://localhost:3000';
-
-	const path = '/api/auth/login';
 	const submitInfo = 'Login';
 
 	let username;
@@ -19,13 +14,11 @@
 			password
 		};
 
-		const res = await auth(`${ip}${path}`, JSON.stringify(userData));
-
-		if (res.status === 200) {
-			isLogin.update(() => true);
+		try {
+			await init(userData);
 			goto('/');
-		} else {
-			console.log('Unable to login');
+		} catch (error) {
+			console.error(error);
 		}
 	};
 </script>
