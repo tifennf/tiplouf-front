@@ -5,7 +5,7 @@
 <script>
 	import Playlist from '$components/Playlist.svelte';
 	import loadPlaylist from '$lib/actions/loadPlaylist';
-	import { playlistStore } from '$lib/stores/user/playlistStore';
+	import { playlistStore } from '$lib/stores/user';
 </script>
 
 <svelte:head>

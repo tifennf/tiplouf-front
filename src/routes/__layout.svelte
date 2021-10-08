@@ -1,7 +1,7 @@
 <script>
 	import '../app.css';
 	import '../animation.css';
-	import { authStore } from '$lib/stores/user/authStore';
+	import { authStore } from '$lib/stores/user';
 </script>
 
 <div class="wrapper">
