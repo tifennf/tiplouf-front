@@ -14,8 +14,16 @@
 			password
 		};
 
+		const ip = import.meta.env.VITE_LOGIN_IP;
+		const playlistIp = import.meta.env.VITE_PLAYLIST_IP;
+
 		try {
-			await user.init(userData);
+			const isLogged = await user.login(ip, userData);
+
+			if (isLogged) {
+				user.loadPlaylist(playlistIp);
+			}
+
 			goto('/');
 		} catch (error) {
 			console.error(error);

@@ -4,7 +4,6 @@
 
 <script>
 	import Playlist from '$components/Playlist.svelte';
-	import loadPlaylist from '$lib/actions/loadPlaylist';
 	import { user } from '$lib/stores/user';
 
 	$: playlistStore = $user.playlist;
@@ -21,4 +20,7 @@
 </section>
 
 <style>
+	section {
+		display: flex;
+	}
 </style>

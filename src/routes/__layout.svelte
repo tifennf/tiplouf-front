@@ -1,15 +1,21 @@
 <script>
 	import '../app.css';
 	import '../animation.css';
-	import { user } from '$lib/stores/user';
+	import { session } from '$app/stores';
+	import Led from '$components/Led.svelte';
+	import initUserStore from '$lib/actions/initUserStore';
+
+	$: isLogged = $session.user.isLogged;
+
+	const ledMessage = {
+		green: 'Logged in',
+		red: 'Not logged in'
+	};
 </script>
 
 <div class="wrapper">
 	<header>
-		<div class="user-info">
-			<div class="led" class:green-led={$user.isLogin} />
-			<span class="description">Not logged in</span>
-		</div>
+		<Led greenCondition={isLogged} message={ledMessage} />
 		<nav>
 			<ul>
 				<li class="anim-floating"><a href="/">HOME</a></li>
@@ -19,7 +25,7 @@
 		</nav>
 	</header>
 
-	<main>
+	<main use:initUserStore={isLogged}>
 		<slot />
 	</main>
 </div>
@@ -30,30 +36,6 @@
 		display: grid;
 		grid-template-rows: 2fr 3fr 1fr;
 		grid-template-columns: 100%;
-	}
-
-	.user-info {
-		display: flex;
-		gap: 5px;
-		position: absolute;
-		top: 4.6rem;
-	}
-
-	.led {
-		padding: 0.5rem;
-		border-radius: 50%;
-		border-style: double;
-		border-width: 4px;
-		background-color: var(--red-led);
-	}
-
-	.green-led {
-		background-color: green;
-	}
-
-	.description {
-		display: grid;
-		place-items: center;
 	}
 
 	header {
