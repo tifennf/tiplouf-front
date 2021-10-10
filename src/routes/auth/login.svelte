@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { session } from '$app/stores';
 	import Form from '$components/Form.svelte';
 	import { user } from '$lib/stores/user';
 
@@ -21,6 +22,7 @@
 			const isLogged = await user.login(ip, userData);
 
 			if (isLogged) {
+				$session.user.isLogged = true;
 				user.loadPlaylist(playlistIp);
 			}
 
