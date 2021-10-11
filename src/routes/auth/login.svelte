@@ -19,12 +19,13 @@
 		const playlistIp = import.meta.env.VITE_PLAYLIST_IP;
 
 		try {
-			const isLogged = await user.login(ip, userData);
+			const res = await auth(ip, JSON.stringify(userData));
 
-			if (isLogged) {
-				$session.user.isLogged = true;
-				user.loadPlaylist(playlistIp);
+			if (!res.ok) {
+				throw 'Could not login';
 			}
+			$session.user.isLogged = true;
+			user.loadPlaylist(playlistIp);
 
 			goto('/');
 		} catch (error) {

@@ -22,6 +22,7 @@ const checkSessionId = async (sessionId, ip) => {
 
 	const res = await auth(ip, JSON.stringify(sessionCheck));
 
-	return res.status === 202;
+	return res.ok;
 };
+
 export { auth, checkSessionId, validateSessionId };
