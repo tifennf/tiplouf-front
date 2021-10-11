@@ -6,7 +6,7 @@
 	import Playlist from '$lib/components/Playlist.svelte';
 	import { user } from '$lib/stores/user';
 
-	$: playlistStore = $user.playlist;
+	$: playlist = $user;
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 </svelte:head>
 
 <section>
-	{#each playlistStore as playlistData}
+	{#each playlist as playlistData}
 		<Playlist {playlistData} />
 	{/each}
 </section>
