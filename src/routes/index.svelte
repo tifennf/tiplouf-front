@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import Playlist from '$components/Playlist.svelte';
+	import Playlist from '$lib/components/Playlist.svelte';
 	import { user } from '$lib/stores/user';
 
 	$: playlistStore = $user.playlist;

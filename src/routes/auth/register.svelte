@@ -1,7 +1,7 @@
 <script>
 	import { auth } from '$lib/auth.js';
 
-	import Form from '$components/Form.svelte';
+	import Form from '$lib/components/Form.svelte';
 	import { goto } from '$app/navigation';
 
 	export let ip = 'http://localhost:3000';

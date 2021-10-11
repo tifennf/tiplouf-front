@@ -9,7 +9,7 @@ const config = {
 		vite: {
 			resolve: {
 				alias: {
-					$components: resolve('./src/components')
+					$styles: resolve('./src/styles')
 				}
 			}
 		}

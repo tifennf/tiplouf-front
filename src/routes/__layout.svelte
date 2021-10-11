@@ -1,8 +1,8 @@
 <script>
-	import '../app.css';
-	import '../animation.css';
+	import '$styles/app.css';
+	import '$styles/animation.css';
 	import { session } from '$app/stores';
-	import Led from '$components/Led.svelte';
+	import Led from '$lib/components/Led.svelte';
 	import initUserStore from '$lib/actions/initUserStore';
 
 	$: isLogged = $session.user.isLogged;

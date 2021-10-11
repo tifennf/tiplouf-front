@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
-	import Form from '$components/Form.svelte';
+	import Form from '$lib/components/Form.svelte';
 	import { user } from '$lib/stores/user';
 
 	const submitInfo = 'Login';
