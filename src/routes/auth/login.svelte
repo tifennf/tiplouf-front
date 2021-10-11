@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
+	import { auth } from '$lib/auth';
 	import Form from '$lib/components/Form.svelte';
 	import { user } from '$lib/stores/user';
 
@@ -8,6 +9,8 @@
 
 	let username;
 	let password;
+
+	let errorState;
 
 	const onSubmit = async () => {
 		const userData = {
@@ -22,19 +25,19 @@
 			const res = await auth(ip, JSON.stringify(userData));
 
 			if (!res.ok) {
-				throw 'Could not login';
+				throw new Error('Could not login');
 			}
 			$session.user.isLogged = true;
 			user.loadPlaylist(playlistIp);
 
 			goto('/');
 		} catch (error) {
-			console.error(error);
+			errorState = error;
 		}
 	};
 </script>
 
-<Form {onSubmit} {submitInfo}>
+<Form {onSubmit} {submitInfo} error={errorState}>
 	<input
 		type="text"
 		name="username"

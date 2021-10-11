@@ -6,10 +6,11 @@ const get = async (req) => {
 		}
 	});
 
-	const data = await res.json();
+	// const data = await res.json();
 
 	return {
-		body: data
+		status: res.status,
+		body: res.body
 	};
 };
 
