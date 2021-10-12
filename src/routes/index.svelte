@@ -5,8 +5,6 @@
 <script>
 	import Playlist from '$lib/components/Playlist.svelte';
 	import { user } from '$lib/stores/user';
-
-	$: console.log($user);
 </script>
 
 <svelte:head>
@@ -15,7 +13,7 @@
 
 <section>
 	{#each $user as playlistData}
-		<p>{playlistData}</p>
+		<Playlist {playlistData} />
 	{/each}
 </section>
 

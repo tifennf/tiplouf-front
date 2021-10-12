@@ -28,6 +28,7 @@
 				throw new Error('Could not login');
 			}
 			$session.user.isLogged = true;
+
 			user.loadPlaylist(playlistIp);
 
 			goto('/');
