@@ -12,8 +12,8 @@
 	.wrapper {
 		display: flex;
 		gap: 5px;
-		position: absolute;
-		top: 4.6rem;
+		/* position: absolute; */
+		/* top: 4.6rem; */
 	}
 
 	.led {

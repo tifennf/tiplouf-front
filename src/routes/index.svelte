@@ -12,13 +12,28 @@
 </svelte:head>
 
 <section>
-	{#each $user as playlistData}
-		<Playlist {playlistData} />
-	{/each}
+	<div class="wrapper">
+		{#each $user as playlistData}
+			<Playlist {playlistData} />
+		{/each}
+	</div>
+	<button class="add"> Add Playlist </button>
 </section>
 
 <style>
 	section {
+		height: 100%;
+		display: grid;
+		grid-template-rows: 90% 10%;
+	}
+
+	.wrapper {
 		display: flex;
+		gap: 1rem;
+	}
+
+	.add {
+		grid-row-start: 2;
+		place-self: end;
 	}
 </style>

@@ -34,14 +34,17 @@
 	.wrapper {
 		height: 100%;
 		display: grid;
-		grid-template-rows: 2fr 3fr 1fr;
+		grid-template-rows: 1fr 3fr;
 		grid-template-columns: 100%;
 	}
 
 	header {
 		position: relative;
-		display: grid;
-		place-items: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
 	}
 	header nav {
 		border-width: 0.5px;
