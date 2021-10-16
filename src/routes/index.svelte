@@ -11,6 +11,8 @@
 	import { user } from '$lib/stores/user';
 
 	let isOpen = false;
+
+	$: console.log($user);
 </script>
 
 <svelte:head>
@@ -43,7 +45,7 @@
 		gap: 1rem;
 
 		justify-content: center;
-
+		flex-wrap: wrap;
 		padding: 1rem;
 	}
 

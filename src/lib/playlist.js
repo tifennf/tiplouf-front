@@ -17,9 +17,17 @@ const postPlaylist = async (ip, data) => {
 		body: data
 	});
 
-	const res = await response.json();
-
-	return res;
+	return response;
 };
 
-export { getPlaylist, postPlaylist };
+const delPlaylist = async (ip, data) => {
+	const response = await fetch(ip, {
+		method: 'DELETE',
+		headers: { 'content-type': 'application/json' },
+		body: data
+	});
+
+	return response;
+};
+
+export { getPlaylist, postPlaylist, delPlaylist };

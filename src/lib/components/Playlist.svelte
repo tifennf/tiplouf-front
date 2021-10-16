@@ -1,11 +1,27 @@
 <script>
+	import { delPlaylist } from '$lib/playlist';
+	import { user } from '$lib/stores/user';
+
 	export let playlistData;
 
 	const handlePlay = () => {
 		console.log(playlistData);
 	};
 
-	const handleDelete = () => {};
+	const handleDelete = async () => {
+		const ip = import.meta.env.VITE_PLAYLIST_IP;
+
+		const id = playlistData.p_id;
+		const data = { id };
+
+		const res = await delPlaylist(ip, JSON.stringify(data));
+
+		if (!res.ok) {
+			return;
+		}
+
+		user.removePlaylist(id);
+	};
 </script>
 
 <div class="wrapper">
