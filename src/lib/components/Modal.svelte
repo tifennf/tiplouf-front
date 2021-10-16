@@ -8,25 +8,29 @@
 </script>
 
 {#if show}
-	<div class="wrapper" class:center>
-		<section>
-			<button on:click={handleClick}>×</button>
-			<slot />
-		</section>
+	<div class="mask">
+		<div class="wrapper" class:center>
+			<section>
+				<button on:click={handleClick}>×</button>
+				<slot />
+			</section>
+		</div>
 	</div>
 {/if}
 
 <style>
-	.wrapper {
-		padding: 2rem;
-		background-color: aqua;
+	.mask {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+
+		top: 0;
+		display: grid;
+		place-items: center;
 	}
 
-	.center {
-		position: absolute;
-		top: 50%;
-		right: 50%;
-		left: -50%;
-		bottom: -50%;
+	.wrapper {
+		padding: 2rem;
+		background-color: white;
 	}
 </style>

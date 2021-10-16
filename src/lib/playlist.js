@@ -9,4 +9,17 @@ const getPlaylist = async (ip) => {
 
 	return res.data;
 };
-export { getPlaylist };
+
+const postPlaylist = async (ip, data) => {
+	const response = await fetch(ip, {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: data
+	});
+
+	const res = await response.json();
+
+	return res;
+};
+
+export { getPlaylist, postPlaylist };
